@@ -26,7 +26,8 @@ const onxrloaded = () => {
         .then(targetData => {
 
             XR8.XrController.configure({
-                imageTargetData: [targetData]
+                imageTargetData: [targetData],
+                  scale: 'absolute'
             })
 
         })
@@ -147,7 +148,7 @@ AFRAME.registerComponent('place-arch', {
 
             src="#archModel"
 
-            position="0 0 -3"
+            position="0 0 3"
 
             rotation="0 0 0"
 
