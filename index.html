@@ -14,6 +14,7 @@
 
   <script>
     const onxrloaded = () => {
+      // Асинхронно загружаем сгенерированный JSON-файл маркера
       fetch('./image-targets/puppy-card.json')
         .then(response => response.json())
         .then(targetData => {
@@ -30,22 +31,23 @@
         let detached = false;
         
         this.el.sceneEl.addEventListener('xrimagefound', (event) => {
+          // Укажите имя вашей цели, если нужно фильтровать
           if (!detached) {
-            const modelEl = this.el.querySelector('a-gltf-model');
+            const modelEl = this.el.querySelector('a-entity'); // или ваш селектор арки
             if (modelEl) {
               const worldPos = new THREE.Vector3();
               const worldQuat = new THREE.Quaternion();
               const worldScale = new THREE.Vector3();
 
-              // 1. Получаем текущие мировые координаты арки
+              // Получаем текущие мировые координаты в момент нахождения
               modelEl.object3D.getWorldPosition(worldPos);
               modelEl.object3D.getWorldQuaternion(worldQuat);
               modelEl.object3D.getWorldScale(worldScale);
 
-              // 2. Переносим элемент в DOM-дерево сцены (отвязываем от маркера)
-              this.el.sceneEl.appendChild(modelEl);
+              // Переносим объект в корневую сцену, фиксируя его в пространстве
+              this.el.sceneEl.object3D.attach(modelEl.object3D);
 
-              // 3. Восстанавливаем точные координаты в пространстве сцены
+              // Возвращаем сохраненные координаты
               modelEl.object3D.position.copy(worldPos);
               modelEl.object3D.quaternion.copy(worldQuat);
               modelEl.object3D.scale.copy(worldScale);
