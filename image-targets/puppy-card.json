@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "top": 95,
+    "left": 0,
+    "width": 2017,
+    "height": 2689,
+    "isRotated": false,
+    "originalWidth": 2017,
+    "originalHeight": 2880
+  },
+  "imagePath": "image-targets/puppy-card_luminance.jpg",
+  "metadata": null,
+  "name": "puppy-card",
+  "resources": {
+    "originalImage": "puppy-card_original.jpg",
+    "croppedImage": "puppy-card_cropped.jpg",
+    "thumbnailImage": "puppy-card_thumbnail.jpg",
+    "luminanceImage": "puppy-card_luminance.jpg"
+  },
+  "created": 1785409207646,
+  "updated": 1785409227310
+}
