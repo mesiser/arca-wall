@@ -9,4 +9,37 @@
         })
         .catch(error => console.error('Ошибка загрузки таргета:', error));
     }
-    window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded);</script></head><body><a-scene xrweb="disableWorldTracking: false" xrextras-loading xrextras-gesture-detector xrextras-almost-there xrextras-runtime-error><a-assets><a-asset-item id="archModel" src="./assets/arcageo.glb"></a-asset-item></a-assets><a-camera position="0 1.6 0"></a-camera><a-light type="ambient" intensity="1.2"></a-light><a-light type="directional" position="1 4 2" intensity="0.8"></a-light><a-entity xrextras-named-image-target="name: puppy-card"><a-gltf-model src="#archModel" scale="0.16 0.16 0.16" position="0.95 0 0.05" rotation="0 0 0"></a-gltf-model></a-entity></a-scene></body></html>
+    window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded);
+
+    AFRAME.registerComponent('detach-to-world', {
+      init: function () {
+        let detached = false;
+        
+        this.el.sceneEl.addEventListener('xrimagefound', (event) => {
+          // Укажите имя вашей цели, если нужно фильтровать
+          if (!detached) {
+            const modelEl = this.el.querySelector('a-entity'); // или ваш селектор арки
+            if (modelEl) {
+              const worldPos = new THREE.Vector3();
+              const worldQuat = new THREE.Quaternion();
+              const worldScale = new THREE.Vector3();
+
+              // Получаем текущие мировые координаты в момент нахождения
+              modelEl.object3D.getWorldPosition(worldPos);
+              modelEl.object3D.getWorldQuaternion(worldQuat);
+              modelEl.object3D.getWorldScale(worldScale);
+
+              // Переносим объект в корневую сцену, фиксируя его в пространстве
+              this.el.sceneEl.object3D.attach(modelEl.object3D);
+
+              // Возвращаем сохраненные координаты
+              modelEl.object3D.position.copy(worldPos);
+              modelEl.object3D.quaternion.copy(worldQuat);
+              modelEl.object3D.scale.copy(worldScale);
+
+              detached = true;
+            }
+          }
+        });
+      }
+    });</script></head><body><a-scene xrweb="disableWorldTracking: false" xrextras-loading xrextras-gesture-detector xrextras-almost-there xrextras-runtime-error><a-assets><a-asset-item id="archModel" src="./assets/arcageo.glb"></a-asset-item></a-assets><a-camera position="0 1.6 0"></a-camera><a-light type="ambient" intensity="1.2"></a-light><a-light type="directional" position="1 4 2" intensity="0.8"></a-light><a-entity xrextras-named-image-target="name: puppy-card" detach-to-world><a-gltf-model src="#archModel" scale="0.16 0.16 0.16" position="0.95 0 0.05" rotation="0 0 0"></a-gltf-model></a-entity></a-scene></body></html>
