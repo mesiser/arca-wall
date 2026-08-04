@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-<title>Arca 8th Wall</title>
-
-<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js"
-        async
-        crossorigin="anonymous"
-        data-preload-chunks="slam"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js"
-        crossorigin="anonymous"></script>
-
-<script>
-
-const onxrloaded = () => {
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>Arca 8th Wall</title><script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/xrextras@1/dist/xrextras.js" crossorigin="anonymous"></script><script>const onxrloaded = () => {
 
     fetch('./image-targets/puppy-card.json')
         .then(r => r.json())
@@ -98,7 +77,6 @@ AFRAME.registerComponent('place-arch', {
         console.log("Arch detached from image target")
 
     }
-
 })
 
 </script>
