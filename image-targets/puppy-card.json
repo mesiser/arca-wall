@@ -1,23 +1,23 @@
 {
   "type": "PLANAR",
   "properties": {
-    "top": 95,
-    "left": 0,
-    "width": 2017,
-    "height": 2689,
-    "isRotated": false,
-    "originalWidth": 2017,
-    "originalHeight": 2880
+    "top": 0,
+    "left": 1,
+    "width": 1819,
+    "height": 2426,
+    "isRotated": true,
+    "originalWidth": 1822,
+    "originalHeight": 2426
   },
-  "imagePath": "image-targets/puppy-card_luminance.jpg",
+  "imagePath": "image-targets/puppy-card_luminance.png",
   "metadata": null,
   "name": "puppy-card",
   "resources": {
-    "originalImage": "puppy-card_original.jpg",
-    "croppedImage": "puppy-card_cropped.jpg",
-    "thumbnailImage": "puppy-card_thumbnail.jpg",
-    "luminanceImage": "puppy-card_luminance.jpg"
+    "originalImage": "puppy-card_original.png",
+    "croppedImage": "puppy-card_cropped.png",
+    "thumbnailImage": "puppy-card_thumbnail.png",
+    "luminanceImage": "puppy-card_luminance.png"
   },
-  "created": 1785409207646,
-  "updated": 1785409227310
+  "created": 1785920826127,
+  "updated": 1785920915262
 }
